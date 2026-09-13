@@ -1,0 +1,132 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech Recognition</title>
+</head>
+
+<body>
+
+    <h1>Web Speech API</h1>
+
+    <button id="startBtn">Start Listening</button>
+
+    <div id="output"></div>
+
+    <script>
+
+        const btn = document.querySelector("#startBtn");
+        const output = document.querySelector("#output");
+
+        const SpeechRecognition =
+            window.SpeechRecognition ||
+            window.webkitSpeechRecognition;
+
+        if (!SpeechRecognition) {
+            output.textContent =
+                "Speech Recognition is not supported in this browser.";
+        } else {
+
+            const recognition = new SpeechRecognition();
+
+            recognition.lang = "en-IN";
+            recognition.continuous = false;
+            recognition.interimResults = true;
+
+            btn.addEventListener("click", () => {
+                recognition.start();
+            });
+
+            recognition.onstart = () => {
+                console.log("Listening started");
+            };
+
+            recognition.onresult = (event) => {
+
+                let text = "";
+
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    text += event.results[i][0].transcript;
+                }
+
+                output.textContent = text;
+                console.log(text);
+            };
+
+            recognition.onspeechend = () => {
+                console.log("Speech ended");
+                recognition.stop();
+            };
+
+            recognition.onend = () => {
+                console.log("Listening ended");
+            };
+
+            recognition.onerror = (event) => {
+                console.error("Speech recognition error:", event.error);
+            };
+        }
+
+    </script>
+
+</body>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Web Speech API</h1>
+   <button id="startBtn">start lestening</button>
+   <div id="output"> </div>
+<script>
+    console.log("page load")
+    const btn = document.querySelector("#startBtn"); 
+
+    const recognition = new SpeechRecognition() ;
+
+    recognition.lang = "en-IN"
+    // recognition.continuous = true;
+    recognition.interiumResults = true
+
+    btn.addEventListener("click", ()=>{
+        recognition.start()
+
+    })
+
+    recognition.onresult = (e)=>{
+
+  console.log(e)
+const text = e.results[0][0].transcript;
+
+document.querySelector("#output").textContent  = text;
+    }
+
+recognition.onstart = ()=>{
+ console.log("listening started")   
+}
+
+recognition.onend = ()=>{
+ console.log("listening end")   
+}
+recognition.onspeechend = ()=>{
+console.log("speech end ")
+}
+recognition.onerror = (e)=>{
+console.log(e.error)
+}
+
+</script>
+</body>
+</html>
+
+
