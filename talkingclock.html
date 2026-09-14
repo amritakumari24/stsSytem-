@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Web Speech : Talking Clock</h1>
+
+    <button id="timeBtn"> Tell Time</button>
+
+    <script>
+const timeBtn = document.querySelector("#timeBtn");
+timeBtn.addEventListener("click", ()=>{
+    const now = new Date()
+
+    const timeString = now.toLocaleTimeString()
+
+const speech = new SpeechSynthesisUtterance(`  The current time is ${timeString}.`)
+    speech.rate = 0.8
+    speechSynthesis.speak(speech)
+})
+
+
+    </script>
+
+</body>
+</html>
