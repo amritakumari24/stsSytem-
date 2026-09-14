@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Page Reader</h1>
+
+    <h2 id="title">JavaScript Tutorial</h2>
+<p id="content">
+   JavaScript (JS) is a high-level, multi-paradigm programming language that serves as one of the core technologies of the World Wide Web, alongside HTML and CSS. 
+</p>
+    
+<button id="readBtn">Read article</button>
+
+<script>
+
+ const readBtn = document.querySelector("#readBtn")   
+
+ readBtn.addEventListener("click", ()=>{
+    const title = document.querySelector("#title").textContent
+    const content = document.querySelector("#content").textContent
+
+    const speech = new SpeechSynthesisUtterance(
+        title + ". " + content
+    )
+   speechSynthesis.speak(speech);
+ })
+
+
+
+
+</script>
+</body>
+</html>

@@ -6,62 +6,31 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Voice Search </h1>
-   <input type="text" id="searchBox"/>
-    <button id="voiceBtn">🎤</button>
+
+    <h1>Text to Speech</h1>
+
+   <textarea id="text"></textarea>
+
+    <button id="speakBtn">Speak</button>
+
+    <script>
+
+        const speakBTn = document.querySelector("#speakBtn")
+
+        const text = document.querySelector("#text")
 
 
+        speakBtn.addEventListener("click", ()=>{
+     
+           const speech = new SpeechSynthesisUtterance(text.value)
 
-<script>
-    console.log("page load")
-    const btn = document.querySelector("#voiceBtn"); 
+           speech.lang = "en-IN"
+           speech.rate = 1;
+           speech.pitch = 1
+           speech.volume = 1
+           speechSynthesis.speak(speech)
+        })
 
-    const recognition = new SpeechRecognition() ;
-
-    recognition.lang = "en-IN"
-    // recognition.continuous = true;
-    recognition.interimResults = true
-
-    btn.addEventListener("click", ()=>{
-        recognition.start()
-
-    })
-
-    recognition.onresult = (e)=>{
-
-  console.log(e)
-const searchtext = e.results[0][0].transcript;
-
-document.querySelector("#searchBox").value  = searchtext;
-    }
-
-// recognition.onstart = ()=>{
-//  console.log("listening started")   
-// }
-
-// recognition.onend = ()=>{
-//  console.log("listening end")   
-// }
-// recognition.onspeechend = ()=>{
-// console.log("speech end ")
-// }
-// recognition.onerror = (e)=>{
-// console.log(e.error)
-// }
-// recognition.onstart = ()=>{
-//  console.log("listening started")   
-// }
-
-// recognition.onend = ()=>{
-//  console.log("listening end")   
-// }
-// recognition.onspeechend = ()=>{
-// console.log("speech end ")
-// }
-// recognition.onerror = (e)=>{
-// console.log(e.error)
-// }
-
-</script>
+    </script>
 </body>
 </html>
