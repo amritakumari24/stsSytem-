@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Command Search </h1>
+   <input type="text" id="searchBox"/>
+    <button id="commandBtn">🎤</button>
+
+
+
+<script>
+    console.log("page load")
+    const btn = document.querySelector("#commandBtn"); 
+
+    const recognition = new SpeechRecognition() ;
+
+    recognition.lang = "en-IN"
+    // recognition.continuous = true;
+    recognition.interimResults = true
+
+    btn.addEventListener("click", ()=>{
+        recognition.start()
+
+    })
+
+    recognition.onresult = (e)=>{
+
+  console.log(e)
+const command = e.results[0][0].transcript.toLowerCase();
+
+document.querySelector("#searchBox").value  = command;
+
+
+if (command.includes("open google")){
+   window.open("https://www.google.com/")
+}if (command.includes("open youtube")){
+window.open("https://youtube.com")
+}
+ if (command.includes("change theme")){
+    window.document.body.style.backgroundColor = "black"
+     window.document.body.style.color = "white"
+}
+    }
+
+
+
+</script>
+</body>
+</html>
